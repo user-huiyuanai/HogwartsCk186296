@@ -12,4 +12,4 @@ class Calculator:
     def divide(self,a,b):
         if b == 0:
             return "除数不能为零"
-        return a/b
+        return round(a/b,2)

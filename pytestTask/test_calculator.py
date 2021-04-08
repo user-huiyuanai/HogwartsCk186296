@@ -18,3 +18,10 @@ class TestCalculator:
     ],ids=["正整数相加","浮点数相加","整数浮点数相加"])
     def test_add(self,a,b,expect):
         assert expect == self.cal.add(a,b)
+
+
+    @pytest.mark.parametrize('a,b,expect',[
+        [1,1,1],[2.0,3,0.67],[3,-3,-1],[4,0,"除数不能为零"],[0,20,0]
+    ],ids=["正整数相除","相除保留两位小数","正整数除以负整数","除数为0","被除数为0"])
+    def test_divide(self,a,b,expect):
+        assert expect == self.cal.divide(a,b)
