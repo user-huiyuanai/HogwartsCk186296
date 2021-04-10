@@ -5,8 +5,8 @@ import pytest
 import yaml
 import os
 class TestCalculator:
+    # 获取yaml中的数据
     params = yaml.load(open("add.yaml",encoding="utf-8"),Loader=yaml.FullLoader)
-
 
     def setup_class(self):
         self.cal = Calculator()
