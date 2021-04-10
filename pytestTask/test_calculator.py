@@ -2,8 +2,12 @@
 # @Time : 2021/4/8 22:06
 from calculator import Calculator
 import pytest
-
+import yaml
+import os
 class TestCalculator:
+    params = yaml.load(open("add.yaml",encoding="utf-8"),Loader=yaml.FullLoader)
+
+
     def setup_class(self):
         self.cal = Calculator()
 
@@ -13,9 +17,8 @@ class TestCalculator:
     def teardown(self):
         print("计算结束")
 
-    @pytest.mark.parametrize('a,b,expect',[
-        [1,1,2],[1.5,0.5,2.0],[1,0.5,1.5]
-    ],ids=["正整数相加","浮点数相加","整数浮点数相加"])
+    @pytest.mark.parametrize('a,b,expect',params["add"],
+                              ids=params['ids'])
     def test_add(self,a,b,expect):
         assert expect == self.cal.add(a,b)
 
